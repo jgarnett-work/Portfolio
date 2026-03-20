@@ -32,7 +32,7 @@ export default function HeroSection() {
         <>
             <HeroHeader />
             <main className="overflow-hidden">
-                <section id="hero">
+                <section id="hero" className="bg-gradient-hero">
                     <div className="relative pt-12 md:pt-12">
                         <div className="mx-auto max-w-7xl px-6">
                             <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
@@ -66,10 +66,11 @@ export default function HeroSection() {
                                     },
                                 },
                             }}>
-                            <div className="mt-12 flex justify-center">
-                                <div className="group overflow-hidden">
+                            <div className="flex justify-center">
+                                <div className="group overflow-hidden p-10">
                                     <Image
-                                        className="h-96 w-full rounded-md object-cover object-top transition-all duration-500 hover:grayscale group-hover:h-[22.5rem] group-hover:rounded-xl"
+                                        // className="h-96 w-full rounded-md object-cover object-top transition-all duration-500 hover:grayscale group-hover:h-[22.5rem] group-hover:rounded-xl"
+                                        className="brand-panel brand-panel-scale h-96 w-full hover:grayscale"
                                         src='/headshot.jpeg'
                                         alt="Professional Headshot - Josh Garnett"
                                         width="826"

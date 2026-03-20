@@ -5,7 +5,7 @@
 :root {
   --background: oklch(1.0000 0 0);
   --foreground: oklch(0.1884 0.0128 248.5103);
-  --card: oklch(0.9426 0.0425 214.9834);
+  --card: oklch(0.951 0.026 236.824);
   --card-foreground: oklch(0.1884 0.0128 248.5103);
   --popover: oklch(1.0000 0 0);
   --popover-foreground: oklch(0.1884 0.0128 248.5103);
@@ -169,5 +169,146 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-brand {
+    background-image: linear-gradient(
+      135deg,
+      var(--primary) 0%,
+      var(--accent) 100%
+    );
+  }
+
+  .bg-gradient-hero {
+    background-image:
+      radial-gradient(circle at 15% 20%, color-mix(in oklab, var(--primary) 22%, transparent), transparent 30%),
+      radial-gradient(circle at 85% 30%, color-mix(in oklab, var(--accent) 16%, transparent), transparent 35%),
+      linear-gradient(
+        180deg,
+        color-mix(in oklab, var(--background) 92%, white 8%) 0%,
+        var(--background) 100%
+      );
+  }
+
+  .dark .bg-gradient-hero {
+  background-image:
+    radial-gradient(circle at 15% 20%, color-mix(in oklab, var(--primary) 20%, transparent), transparent 50%),
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--background) 92%, white 8%) 0%,
+      var(--background) 100%
+    );
+  }
+
+  .text-gradient-brand {
+    background-image: linear-gradient(
+      135deg,
+      var(--primary) 0%,
+      color-mix(in oklab, var(--primary) 60%, var(--accent)) 55%,
+      var(--accent-foreground) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .border-gradient-brand {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .border-gradient-brand::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, var(--primary) 65%, transparent),
+      color-mix(in oklab, var(--accent-foreground) 55%, transparent)
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+ .glow-brand {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--primary) 12%, transparent),
+      0 12px 40px color-mix(in oklab, var(--primary) 18%, transparent);
+  }
+
+  .dark .glow-brand-heavy {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--primary) 12%, transparent),
+      0 12px 40px color-mix(in oklab, var(--primary) 58%, transparent);
+  }
+
+  .brand-panel {
+    position: relative;
+    isolation: isolate;
+    border-radius: var(--radius);
+    background-color: color-mix(in oklab, var(--card) 80%, transparent);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border);
+    transition:
+      transform 300ms ease-out,
+      box-shadow 300ms ease-out,
+      background-color 300ms ease-out;
+    will-change: transform, box-shadow;
+  }
+
+  .brand-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg,
+        color-mix(in oklab, var(--primary) 65%, transparent),
+        color-mix(in oklab, var(--accent-foreground) 55%, transparent));
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .brand-panel>* {
+    position: relative;
+    z-index: 1;
+  }
+
+  .dark .brand-panel {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--primary) 12%, transparent),
+      0 12px 40px color-mix(in oklab, var(--primary) 58%, transparent);
+  }
+
+  .brand-panel-lift:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--primary) 12%, transparent),
+      0 18px 48px color-mix(in oklab, var(--primary) 58%, transparent);
+  }
+
+  .brand-panel-scale:hover {
+    transform: scale(1.05) translateY(-0.5rem);
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--primary) 12%, transparent),
+      0 12px 40px color-mix(in oklab, var(--primary) 58%, transparent);
+  }
+
+  .hover-text:hover {
+    color: var(--primary);
   }
 }

@@ -15,9 +15,10 @@ export default function StatsSection() {
                     ].map((item) => (
                         <div
                             key={item.label}
-                            className="bg-muted rounded-(--radius) space-y-4 py-12 transition duration-300 ease-out hover:scale-105 hover:-translate-y-2 hover:shadow-xl group"
+                            className="brand-panel brand-panel-scale space-y-4 py-12 group"
+                            // className="border-gradient-brand glow-brand-heavy rounded-2xl bg-card/80 backdrop-blur-sm p-6 rounded-(--radius) space-y-4 py-12 transition duration-300 ease-out hover:scale-105 hover:-translate-y-2 hover:shadow-xl group"
                         >
-                            <div className="text-5xl font-bold transition group-hover:scale-110">
+                            <div className="text-5xl font-bold transition group-hover:scale-130 duration-300 ease-out">
                                 {item.value}
                             </div>
                             <p className="transition group-hover:text-primary">

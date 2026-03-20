@@ -15,7 +15,7 @@ export default function FAQsThree() {
     const faqItems: FAQItem[] = [
         {
             id: 'item-1',
-            icon: 'file',
+            icon: 'code',
             question: 'What got you into coding?',
             answer: 'When I was 10 years old, I was introduced to videogame development. I started by tweaking pieces of code written by other people, reading documentation, and watching YouTube videos. Pretty soon, I\'d find myself up past 2:00AM with that itch to solve a coding project as time flew by. That\'s when I realized I was actually having fun doing something most people deemed work.',
         },
@@ -27,26 +27,26 @@ export default function FAQsThree() {
         },
         {
             id: 'item-3',
-            icon: 'truck',
+            icon: 'party-popper',
             question: 'What are your hobbies?',
             answer: 'I enjoy a wide variety of activities! Most recently, I\'ve become very interested in traveling with friends! Japan has been the highlight of our adventures! Aside from that, I enjoy sports, lifting, coding (surprise), learning songs on the piano, and general social hangouts with old friends or new ones!',
         },
         {
             id: 'item-4',
-            icon: 'globe',
+            icon: 'notebook-pen',
             question: 'What is one piece of advice that has stuck with you?',
             answer: 'The value of a network. It\'s amazing how quickly barriers to a goal can be broken down simply by knowing the right person. I was fortunate enough to build a tremendous amount of close connections in college at a time when the world was afraid to socialize. Through this, I discovered how much I enjoy people and the different journeys and qualities that are unique to each one of us.',
         },
         {
             id: 'item-5',
-            icon: 'package',
+            icon: 'quote',
             question: 'What is one quote that has stuck with you?',
             answer: '"If opportunity doesn\'t knock, build a door." -Milton Berle. To me, this means putting the work in to reach my goals. I\'m not the type of person to wait around until something good finds me, I will seek it out and make it happen. This pairs well with a quote one of the organizational leaders at Collins Aerospace shared with me: "Your future, you drive."',
         },
     ]
 
     return (
-        <section id="faqs" className="bg-muted dark:bg-background py-20">
+        <section id="faqs" className="bg-muted py-20">
             <div className="mx-auto max-w-5xl px-4 md:px-6">
                 <div className="flex flex-col gap-10 md:flex-row md:gap-16">
                     <div className="md:w-1/3">
@@ -55,7 +55,9 @@ export default function FAQsThree() {
                             <p className="text-muted-foreground mt-4">
                                 Check out the dropdown menus to the right or have a look at {' '}
                                 <Link
-                                    href="#"
+                                    href="/resume.pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="text-primary font-medium hover:underline">
                                     my resume.
                                 </Link>
@@ -71,7 +73,7 @@ export default function FAQsThree() {
                                 <AccordionItem
                                     key={item.id}
                                     value={item.id}
-                                    className="bg-background shadow-xs rounded-lg border px-4 last:border-b">
+                                    className="brand-panel brand-panel-lift hover-text px-4">
                                     <AccordionTrigger className="cursor-pointer items-center py-5 hover:no-underline">
                                         <div className="flex items-center gap-3">
                                             <div className="flex size-6">
@@ -85,7 +87,7 @@ export default function FAQsThree() {
                                     </AccordionTrigger>
                                     <AccordionContent>
                                         <div className="px-9">
-                                            <p className="text-base">{item.answer}</p>
+                                            <p className="text-base text-secondary">{item.answer}</p>
                                         </div>
                                     </AccordionContent>
                                 </AccordionItem>
