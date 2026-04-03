@@ -11,27 +11,27 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # 1 Setup Node
+      # 1 Install pnpm FIRST
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      # 2 Setup Node
       - uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: 'pnpm'
 
-      # 2 Install pnpm
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 9
-
-      # 3 Install dependencies (uses pnpm-lock.yaml)
+      # 3 Install dependencies
       - run: pnpm install --frozen-lockfile
 
-      # 4 Build
+      # 4 Build for GitHub Pages
       - run: pnpm build:pages
 
-      # 5 Prevent Jekyll from breaking _next
+      # 5 Prevent Jekyll issues
       - run: touch out/.nojekyll
 
-      # 6 Upload static site
+      # 6 Upload
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
