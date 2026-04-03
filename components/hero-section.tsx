@@ -69,9 +69,8 @@ export default function HeroSection() {
                             <div className="flex justify-center">
                                 <div className="group overflow-hidden p-10">
                                     <Image
-                                        // className="h-96 w-full rounded-md object-cover object-top transition-all duration-500 hover:grayscale group-hover:h-[22.5rem] group-hover:rounded-xl"
                                         className="brand-panel brand-panel-scale h-96 w-full hover:grayscale"
-                                        src='/headshot.jpeg'
+                                        src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/headshot.jpeg`}
                                         alt="Professional Headshot - Josh Garnett"
                                         width="826"
                                         height="1239"
