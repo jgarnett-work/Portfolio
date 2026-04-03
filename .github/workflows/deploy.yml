@@ -1,0 +1,40 @@
+name: Deploy Next.js to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # 1 Setup Node
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'pnpm'
+
+      # 2 Install pnpm
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      # 3 Install dependencies (uses pnpm-lock.yaml)
+      - run: pnpm install --frozen-lockfile
+
+      # 4 Build
+      - run: pnpm build
+
+      # 5 Prevent Jekyll from breaking _next
+      - run: touch out/.nojekyll
+
+      # 6 Upload static site
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+      # 7 Deploy
+      - uses: actions/deploy-pages@v4
