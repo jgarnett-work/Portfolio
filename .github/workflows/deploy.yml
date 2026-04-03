@@ -4,37 +4,35 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
-      # 1 Install pnpm FIRST
-      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
         with:
-          version: 9
+          node-version: 24
+          cache: npm
 
-      # 2 Setup Node
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: 'pnpm'
-
-      # 3 Install dependencies
-      - run: pnpm install --frozen-lockfile
-
-      # 4 Build for GitHub Pages
-      - run: pnpm build:pages
-
-      # 5 Prevent Jekyll issues
+      - run: npm ci
+      - run: npm run build:pages
       - run: touch out/.nojekyll
 
-      # 6 Upload
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
 
-      # 7 Deploy
       - uses: actions/deploy-pages@v4
