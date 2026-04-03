@@ -26,7 +26,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       # 4 Build
-      - run: pnpm build
+      - run: pnpm build:pages
 
       # 5 Prevent Jekyll from breaking _next
       - run: touch out/.nojekyll
